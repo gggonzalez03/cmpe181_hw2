@@ -135,8 +135,7 @@ void send_touch_sensor_data_to_aws(void* parameter)
   {
     if (xQueueReceive(touch_data_q, &touch, portMAX_DELAY))
     {
-      touch = touchRead(4);
-
+      printf("Sending to AWS: %d\n", touch);
       publish_touch_to_topic((void *)&touch);
     }
   }
